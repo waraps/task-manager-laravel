@@ -20,6 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/tasks', 'App\Http\Controllers\TaskController@index');
 Route::get('/task/{id}', 'App\Http\Controllers\TaskController@show');
+
+Route::get('/task/completed/all', 'App\Http\Controllers\TaskController@completed');
+
 Route::post('/task', 'App\Http\Controllers\TaskController@store');
+Route::post('/task/by-name', 'App\Http\Controllers\TaskController@showByName');
+
 Route::put('/task/{id}', 'App\Http\Controllers\TaskController@update');
 Route::delete('/task/{id}', 'App\Http\Controllers\TaskController@destroy');

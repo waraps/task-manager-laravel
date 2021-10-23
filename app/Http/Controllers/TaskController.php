@@ -54,9 +54,22 @@ class TaskController extends Controller
     public function show(Request $request)
     {
         $task = Task::findOrFail($request->id);
-        // error_log(json_encode($task));
 
         return response()->json(['task'=> $task], 200);
+    }
+
+    public function showByName(Request $request)
+    {
+         $tasks = Task::where('name', $request->name)->get();
+
+        return response()->json(['tasks'=> $tasks], 200);
+    }
+
+    public function completed()
+    {
+        $tasks = Task::where('completed', true)->get();
+
+        return response()->json(['tasks'=> $tasks], 200);
     }
 
     /**
